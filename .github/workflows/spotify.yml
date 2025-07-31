@@ -9,7 +9,7 @@ jobs:
   update-spotify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: platane/spotify-now-playing@v1
 
       - name: Generate Spotify Badge
         uses: Platane/spotify-now-playing@v2
