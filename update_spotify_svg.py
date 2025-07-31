@@ -45,24 +45,32 @@ def generate_svg(track_data):
     else:
         song_text = "Offline"
 
-    # Escape ampersands and special chars
     song_text = html.escape(song_text)
 
-    right_color = "#1DB954" if is_playing else "#9e9e9e"
     left_color = "#555555"
+    right_color = "#1DB954" if is_playing else "#9e9e9e"
     text_color = "#ffffff"
 
-    # Truncate or marquee
-    marquee = ""
-    display_text = song_text
-    if len(song_text) > 30 and is_playing:
-        marquee = f'''
-        <animate attributeName="x" from="120" to="-{len(song_text) * 7}" dur="10s" repeatCount="indefinite" />
-        '''
-        display_text = song_text
+    base_width = 120
+    char_width = 7
+    text_length = len(song_text) * char_width
+    total_width = max(240, base_width + text_length + 20)
 
-    total_width = max(240, 120 + len(display_text) * 7)
-    text_x = 120
+    marquee_svg = ""
+    if len(song_text) > 30 and is_playing:
+        marquee_svg = f'''
+        <g transform="translate({base_width}, 0)">
+            <text y="19" fill="{text_color}">
+                <tspan>
+                    <animate attributeName="x" from="{total_width}" to="-{text_length}" dur="10s" repeatCount="indefinite" />
+                    {song_text}
+                </tspan>
+            </text>
+        </g>
+        '''
+        text_element = ""  # Don't show static text if marquee is active
+    else:
+        text_element = f'<text x="{base_width + 5}" y="19" fill="{text_color}">{song_text}</text>'
 
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{total_width}" height="28">
   <linearGradient id="b" x2="0" y2="100%">
@@ -73,18 +81,14 @@ def generate_svg(track_data):
     <rect width="{total_width}" height="28" rx="3" fill="#fff"/>
   </mask>
   <g mask="url(#a)">
-    <rect width="120" height="28" fill="{left_color}"/>
-    <rect x="120" width="{total_width - 120}" height="28" fill="{right_color}"/>
+    <rect width="{base_width}" height="28" fill="{left_color}"/>
+    <rect x="{base_width}" width="{total_width - base_width}" height="28" fill="{right_color}"/>
     <rect width="{total_width}" height="28" fill="url(#b)"/>
   </g>
   <g fill="{text_color}" font-family="Segoe UI, sans-serif" font-size="13">
     <text x="10" y="19" fill="{text_color}">Spotify</text>
-    <text x="{text_x}" y="19">
-      <tspan>
-        {display_text}
-      </tspan>
-      {marquee}
-    </text>
+    {text_element}
+    {marquee_svg}
   </g>
 </svg>'''
 
