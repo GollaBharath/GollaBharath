@@ -57,7 +57,7 @@ def generate_svg(track_data):
     total_width = max(240, base_width + text_length + 20)
 
     marquee_svg = ""
-    if len(song_text) > 30 and is_playing:
+    if text_length > (total_width - base_width - 10) and is_playing:
         marquee_svg = f'''
         <g transform="translate({base_width}, 0)">
             <text y="19" fill="{text_color}">
@@ -68,7 +68,7 @@ def generate_svg(track_data):
             </text>
         </g>
         '''
-        text_element = ""  # Don't show static text if marquee is active
+        text_element = ""  # Don’t show static text if scrolling
     else:
         text_element = f'<text x="{base_width + 5}" y="19" fill="{text_color}">{song_text}</text>'
 
