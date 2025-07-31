@@ -42,7 +42,7 @@ https.get(url, (res) => {
     <rect width="160" height="20" rx="3" fill="#fff"/>
   </mask>
   <g mask="url(#a)">
-    <rect width="70" height="20" fill="#555"/>
+    <rect width="70" height="20" fill="#5865F2"/>
     <rect x="70" width="90" height="20" fill="#${color === 'brightgreen' ? '4c1' : color === 'red' ? 'e05d44' : color === 'yellow' ? 'dfb317' : '9f9f9f'}"/>
     <rect width="160" height="20" fill="url(#b)"/>
   </g>

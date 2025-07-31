@@ -1,0 +1,28 @@
+name: Update Spotify Now Playing Badge
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update-spotify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate Spotify Badge
+        uses: Platane/spotify-now-playing@v2
+        with:
+          client_id: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          client_secret: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          refresh_token: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+          filename: "spotify-now-playing.svg"
+
+      - name: Commit badge
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add spotify-now-playing.svg
+          git commit -m "Update Spotify badge" || echo "No changes"
+          git push
