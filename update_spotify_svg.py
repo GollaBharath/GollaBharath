@@ -21,7 +21,13 @@ def get_access_token():
     }
 
     response = requests.post(url, headers=headers, data=data)
+    
+    # 👇 Print the full response for debugging
+    print("Status Code:", response.status_code)
+    print("Response:", response.text)
+
     return response.json()["access_token"]
+
 
 def get_current_track(token):
     headers = {
