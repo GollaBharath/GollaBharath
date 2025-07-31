@@ -1,63 +1,62 @@
+import os
 import requests
 import base64
-import json
-from datetime import datetime
-
-CLIENT_ID = "your_client_id"
-CLIENT_SECRET = "your_client_secret"
-REFRESH_TOKEN = "your_refresh_token"
-
-SVG_PATH = "spotify-status.svg"
 
 def get_access_token():
-    url = "https://accounts.spotify.com/api/token"
+    client_id = os.getenv("SPOTIFY_CLIENT_ID")
+    client_secret = os.getenv("SPOTIFY_CLIENT_SECRET")
+    refresh_token = os.getenv("SPOTIFY_REFRESH_TOKEN")
+
+    token_url = "https://accounts.spotify.com/api/token"
+    credentials = f"{client_id}:{client_secret}"
     headers = {
-        "Authorization": "Basic " + base64.b64encode(f"{CLIENT_ID}:{CLIENT_SECRET}".encode()).decode(),
+        "Authorization": "Basic " + base64.b64encode(credentials.encode()).decode(),
         "Content-Type": "application/x-www-form-urlencoded"
     }
+
     data = {
         "grant_type": "refresh_token",
-        "refresh_token": REFRESH_TOKEN
+        "refresh_token": refresh_token
     }
 
-    response = requests.post(url, headers=headers, data=data)
-    
-    # 👇 Print the full response for debugging
-    print("Status Code:", response.status_code)
-    print("Response:", response.text)
+    response = requests.post(token_url, headers=headers, data=data)
+    response.raise_for_status()
 
     return response.json()["access_token"]
 
-
-def get_current_track(token):
+def get_current_playing(access_token):
     headers = {
-        "Authorization": f"Bearer {token}"
+        "Authorization": f"Bearer {access_token}"
     }
-    r = requests.get("https://api.spotify.com/v1/me/player/currently-playing", headers=headers)
-
-    if r.status_code == 204:
+    url = "https://api.spotify.com/v1/me/player/currently-playing"
+    response = requests.get(url, headers=headers)
+    if response.status_code == 204:
         return None
-    return r.json()
+    response.raise_for_status()
+    return response.json()
 
 def generate_svg(track_data):
     if not track_data:
-        text = "Not listening to anything"
+        title = "Not Listening"
+        artist = ""
     else:
-        song = track_data["item"]["name"]
-        artist = ", ".join([a["name"] for a in track_data["item"]["artists"]])
-        text = f"🎵 {song} — {artist}"
+        item = track_data["item"]
+        title = item["name"]
+        artist = ", ".join(artist["name"] for artist in item["artists"])
 
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="360" height="50">
-  <rect width="100%" height="100%" fill="#1DB954" rx="10"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="14" font-family="monospace">{text}</text>
-</svg>'''
-    with open(SVG_PATH, "w", encoding="utf-8") as f:
+    svg = f"""<svg width="300" height="60" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#1DB954" rx="8"/>
+  <text x="10" y="25" font-size="14" fill="white" font-family="Verdana">🎵 Spotify Now Playing</text>
+  <text x="10" y="45" font-size="12" fill="white" font-family="Verdana">{title} - {artist}</text>
+</svg>
+"""
+    with open("spotify-status.svg", "w", encoding="utf-8") as f:
         f.write(svg)
 
 def main():
     token = get_access_token()
-    track = get_current_track(token)
-    generate_svg(track)
+    track_data = get_current_playing(token)
+    generate_svg(track_data)
 
 if __name__ == "__main__":
     main()
