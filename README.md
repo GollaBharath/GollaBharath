@@ -21,5 +21,8 @@
 
 ![Discord Status](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/discord-status.svg)
 
-![Spotify Now Playing](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/spotify-now-playing.svg)
+
+
+<img src="https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/spotify-status.svg" alt="Spotify Now Playing" />
+
 

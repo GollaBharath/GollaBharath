@@ -1,28 +1,34 @@
-name: Update Spotify Now Playing Badge
-
+name: Update Spotify Status
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/2 * * * *"
   workflow_dispatch:
 
 jobs:
   update-spotify:
     runs-on: ubuntu-latest
     steps:
-      - uses: platane/spotify-now-playing@v1
+      - uses: actions/checkout@v3
 
-      - name: Generate Spotify Badge
-        uses: Platane/spotify-now-playing@v2
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          client_id: ${{ secrets.SPOTIFY_CLIENT_ID }}
-          client_secret: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-          refresh_token: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-          filename: "spotify-now-playing.svg"
+          python-version: '3.x'
 
-      - name: Commit badge
+      - name: Install requests
+        run: pip install requests
+
+      - name: Generate Spotify SVG
+        run: python update_spotify_svg.py
+        env:
+          CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+
+      - name: Commit & Push SVG
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add spotify-now-playing.svg
-          git commit -m "Update Spotify badge" || echo "No changes"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add spotify-status.svg
+          git commit -m "Update Spotify status badge" || echo "No changes to commit"
           git push
