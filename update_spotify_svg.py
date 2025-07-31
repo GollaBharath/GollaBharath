@@ -1,6 +1,7 @@
 import os
 import requests
 import base64
+import html
 
 def get_access_token():
     client_id = os.getenv("SPOTIFY_CLIENT_ID")
@@ -36,19 +37,57 @@ def get_current_playing(access_token):
 
 def generate_svg(track_data):
     is_playing = bool(track_data)
-    song_text = "Now Playing" if is_playing else "Offline"
-    right_color = "#1DB954" if is_playing else "#9e9e9e"
-    circle_color = "#ffffff" if is_playing else "#2e2e2e"
-    circle_border = "#0f0f0f" if is_playing else "#5e5e5e"
 
-    svg = f'''<svg width="180" height="28" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="180" height="28" rx="6" fill="#1DB954"/>
-  <rect x="90" y="0" width="90" height="28" rx="6" fill="{right_color}"/>
-  <text x="12" y="18" fill="white" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold">Spotify</text>
-  <circle cx="108" cy="14" r="5" fill="{circle_color}" stroke="{circle_border}" stroke-width="2"/>
-  <text x="120" y="18" fill="white" font-family="Segoe UI, sans-serif" font-size="13">{song_text}</text>
-</svg>
-'''
+    if is_playing:
+        song_name = track_data["item"]["name"]
+        artists = ", ".join([artist["name"] for artist in track_data["item"]["artists"]])
+        song_text = f"{song_name} - {artists}"
+    else:
+        song_text = "Offline"
+
+    # Escape ampersands and special chars
+    song_text = html.escape(song_text)
+
+    right_color = "#1DB954" if is_playing else "#9e9e9e"
+    left_color = "#555555"
+    text_color = "#ffffff"
+
+    # Truncate or marquee
+    marquee = ""
+    display_text = song_text
+    if len(song_text) > 30 and is_playing:
+        marquee = f'''
+        <animate attributeName="x" from="120" to="-{len(song_text) * 7}" dur="10s" repeatCount="indefinite" />
+        '''
+        display_text = song_text
+
+    total_width = max(240, 120 + len(display_text) * 7)
+    text_x = 120
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{total_width}" height="28">
+  <linearGradient id="b" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <mask id="a">
+    <rect width="{total_width}" height="28" rx="3" fill="#fff"/>
+  </mask>
+  <g mask="url(#a)">
+    <rect width="120" height="28" fill="{left_color}"/>
+    <rect x="120" width="{total_width - 120}" height="28" fill="{right_color}"/>
+    <rect width="{total_width}" height="28" fill="url(#b)"/>
+  </g>
+  <g fill="{text_color}" font-family="Segoe UI, sans-serif" font-size="13">
+    <text x="10" y="19" fill="{text_color}">Spotify</text>
+    <text x="{text_x}" y="19">
+      <tspan>
+        {display_text}
+      </tspan>
+      {marquee}
+    </text>
+  </g>
+</svg>'''
+
     with open("spotify-status.svg", "w", encoding="utf-8") as f:
         f.write(svg)
 
