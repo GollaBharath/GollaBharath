@@ -21,7 +21,6 @@ def get_access_token():
 
     response = requests.post(token_url, headers=headers, data=data)
     response.raise_for_status()
-
     return response.json()["access_token"]
 
 def get_current_playing(access_token):
@@ -36,20 +35,20 @@ def get_current_playing(access_token):
     return response.json()
 
 def generate_svg(track_data):
-    if not track_data:
-        title = "Not Listening"
-        artist = ""
-    else:
-        item = track_data["item"]
-        title = item["name"]
-        artist = ", ".join(artist["name"] for artist in item["artists"])
+    is_playing = bool(track_data)
+    song_text = "Now Playing" if is_playing else "Offline"
+    right_color = "#1DB954" if is_playing else "#9e9e9e"
+    circle_color = "#ffffff" if is_playing else "#2e2e2e"
+    circle_border = "#0f0f0f" if is_playing else "#5e5e5e"
 
-    svg = f"""<svg width="300" height="60" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#1DB954" rx="8"/>
-  <text x="10" y="25" font-size="14" fill="white" font-family="Verdana">🎵 Spotify Now Playing</text>
-  <text x="10" y="45" font-size="12" fill="white" font-family="Verdana">{title} - {artist}</text>
+    svg = f'''<svg width="180" height="28" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="180" height="28" rx="6" fill="#1DB954"/>
+  <rect x="90" y="0" width="90" height="28" rx="6" fill="{right_color}"/>
+  <text x="12" y="18" fill="white" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold">Spotify</text>
+  <circle cx="108" cy="14" r="5" fill="{circle_color}" stroke="{circle_border}" stroke-width="2"/>
+  <text x="120" y="18" fill="white" font-family="Segoe UI, sans-serif" font-size="13">{song_text}</text>
 </svg>
-"""
+'''
     with open("spotify-status.svg", "w", encoding="utf-8") as f:
         f.write(svg)
 
