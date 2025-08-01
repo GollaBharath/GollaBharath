@@ -40,18 +40,16 @@ https.get(url, (res) => {
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
   <mask id="a">
-    <rect width="160" height="20" rx="3" fill="#fff"/>
+    <rect width="160" height="28" rx="3" fill="#fff"/>
   </mask>
   <g mask="url(#a)">
-    <!-- Left: Discord Blue -->
-    <rect width="70" height="20" fill="#5865F2"/>
-    <!-- Right: Dynamic -->
-    <rect x="70" width="90" height="20" fill="#${color}"/>
-    <rect width="160" height="20" fill="url(#b)"/>
+    <rect width="70" height="28" fill="#5865F2"/>
+    <rect x="70" width="90" height="28" fill="#${color}"/>
+    <rect width="160" height="28" fill="url(#b)"/>
   </g>
   <g fill="#fff" text-anchor="middle" font-family="Verdana, Geneva, sans-serif" font-size="11">
-    <text x="35" y="14">${label}</text>
-    <text x="115" y="14">${message}</text>
+    <text x="35" y="19">${label}</text>
+    <text x="115" y="19">${message}</text>
   </g>
 </svg>`;
 

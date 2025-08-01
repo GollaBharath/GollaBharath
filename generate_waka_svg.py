@@ -1,46 +1,90 @@
 import requests
 import os
 
-api_key = os.getenv("WAKATIME_API_KEY")
-headers = {"Authorization": f"Bearer {api_key}"}
+# --- Configuration ---
+WAKATIME_API_KEY = os.getenv("WAKATIME_API_KEY")
+HEADERS = {"Authorization": f"Bearer {WAKATIME_API_KEY}"}
+API_URL = "https://wakatime.com/api/v1/users/current/all_time_since_today"
+OUTPUT_DIR = "badges"
 
-os.makedirs("badges", exist_ok=True)
+# --- Helper Function ---
+def format_loc(n):
+    """Formats large numbers into a more readable string (e.g., 1.3 million)."""
+    if n < 1_000_000:
+        return f"{n:,}"
+    
+    millions = n / 1_000_000
+    return f"{millions:.1f} million"
 
-# Get Total Code Time
-try:
-    res = requests.get("https://wakatime.com/api/v1/users/current/stats/last_7_days", headers=headers)
-    res.raise_for_status()
-    code_time = res.json()["data"]["human_readable_total"]
-except Exception as e:
-    code_time = "N/A"
-
-# Get Total LOC
-try:
-    res = requests.get("https://wakatime.com/api/v1/users/current/all_time_since_today", headers=headers)
-    res.raise_for_status()
-    loc = f'{res.json()["data"]["total_lines"]:,} LOC'
-except Exception as e:
-    loc = "N/A"
-
+# --- SVG Generation Function ---
 def make_svg(label, message, filename):
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="190" height="28">
+    """Generates a dynamic-width SVG badge."""
+    font_family = "Segoe UI, Ubuntu, sans-serif"
+    font_size = 13
+    padding_x = 15
+    char_width_multiplier = 7.5 
+    
+    # Calculate widths of the two parts of the badge
+    label_width = (len(label) * char_width_multiplier) + (padding_x * 2)
+    message_width = (len(message) * char_width_multiplier) + (padding_x * 2)
+    total_width = label_width + message_width
+    
+    # Calculate x positions for the text
+    label_text_x = label_width / 2
+    message_text_x = label_width + (message_width / 2)
+
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{total_width}" height="28">
   <linearGradient id="grad" x1="0" x2="0" y1="0" y2="1">
     <stop offset="0" stop-color="#2b2b2b" stop-opacity=".1"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <rect rx="5" width="190" height="28" fill="#21262d"/>
-  <rect rx="5" width="95" height="28" fill="#2d333b"/>
-  <rect rx="5" x="95" width="95" height="28" fill="#21262d"/>
-  <path fill="url(#grad)" d="M0 0h190v28H0z"/>
-  <g fill="#fff" text-anchor="middle"
-     font-family="Segoe UI, Ubuntu, sans-serif"
-     font-size="13">
-    <text x="47.5" y="19" fill="#c9d1d9">{label}</text>
-    <text x="142.5" y="19" fill="#fff">{message}</text>
+  
+  <rect rx="5" width="{total_width}" height="28" fill="#21262d"/>
+  <rect rx="5" width="{label_width}" height="28" fill="#2d333b"/>
+  <path fill="url(#grad)" d="M0 0h{total_width}v28H0z"/>
+  
+  <g fill="#fff" text-anchor="middle" font-family="{font_family}" font-size="{font_size}">
+    <text x="{label_text_x}" y="19" fill="#c9d1d9">{label}</text>
+    <text x="{message_text_x}" y="19" fill="#fff">{message}</text>
   </g>
 </svg>"""
-    with open(f"badges/{filename}", "w", encoding="utf-8") as f:
+    
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    
+    with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as f:
         f.write(svg)
+    print(f"✅ Generated {filename}")
 
-make_svg("💻 Code Time", code_time, "waka-code-time.svg")
-make_svg("📈 LOC", loc, "waka-loc.svg")
+# --- Main Logic ---
+def main():
+    """Fetches WakaTime data and generates SVG badges."""
+    try:
+        res = requests.get(API_URL, headers=HEADERS)
+        res.raise_for_status()
+        data = res.json()["data"]
+        
+        # 1. Code Time Badge
+        code_time = data.get("text", "N/A")
+        if code_time != "N/A":
+            make_svg("Code Time", code_time, "waka-code-time.svg")
+
+        # 2. Lines of Code (LOC) Badge
+        total_lines = data.get("total_lines")
+        if total_lines is not None:
+            message = f"{format_loc(total_lines)} Lines of code"
+            make_svg("From Hello World I've written", message, "waka-loc.svg")
+        else:
+             make_svg("Lines of Code", "N/A", "waka-loc.svg")
+        
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Error fetching WakaTime data: {e}")
+        make_svg("Code Time", "N/A", "waka-code-time.svg")
+        make_svg("Lines of Code", "N/A", "waka-loc.svg")
+    except (KeyError, TypeError) as e:
+        print(f"❌ Error parsing WakaTime data: {e}")
+        make_svg("Code Time", "N/A", "waka-code-time.svg")
+        make_svg("Lines of Code", "N/A", "waka-loc.svg")
+
+
+if __name__ == "__main__":
+    main()
