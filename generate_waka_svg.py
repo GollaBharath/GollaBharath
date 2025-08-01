@@ -1,11 +1,10 @@
 import requests
 import os
-import sys
 
 # --- Configuration ---
-# The API key is now passed as a command-line argument
-WAKATIME_API_KEY = sys.argv[1]
+WAKATIME_API_KEY = os.getenv("WAKATIME_API_KEY")
 HEADERS = {"Authorization": f"Bearer {WAKATIME_API_KEY}"}
+
 API_URL = "https://wakatime.com/api/v1/users/current/all_time_since_today"
 OUTPUT_DIR = "badges"
 

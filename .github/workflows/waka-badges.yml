@@ -22,7 +22,10 @@ jobs:
         run: pip install requests
 
       - name: Generate SVG badges
-        run: python generate_waka_svg.py ${{ secrets.WAKATIME_API_KEY }}
+        run: |
+          echo "WAKATIME_API_KEY=${{ secrets.WAKATIME_API_KEY }}" >> $GITHUB_ENV
+          python generate_waka_svg.py
+        shell: bash
 
       - name: Commit and push
         run: |
