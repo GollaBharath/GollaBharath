@@ -49,12 +49,19 @@
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->
 
+## 🚀 Tools in my Arsenal
+
+<div align='center'>
+
+[![My Skills](https://skillicons.dev/icons?i=mongodb,express,react,nodejs,npm,discordjs,bash,gcp,html,css,js,tailwind,python,c,cpp,java,linux,windows,git,arduino&perline=4)](https://skillicons.dev)
+
+</div>
 
 ## 🌐 Connect with me!!!
 
-<p align="center">
+<p align="center" style="display: flex; justify-content: space-evenly;">
   <a href="https://discordapp.com/users/972801524092776479">
-    <img src="https://skillicons.dev/icons?i=discord"/>
+    <img src="https://user-images.githubusercontent.com/74038190/235294015-47144047-25ab-417c-af1b-6746820a20ff.gif" width="50">
   </a>
   <a href="https://github.com/GollaBharath">
     <img src="https://skillicons.dev/icons?i=github"/>
@@ -63,10 +70,10 @@
     <img src="https://skillicons.dev/icons?i=gmail"/>
   </a>
   <a href="https://www.instagram.com/gollabharath_">
-    <img src="https://skillicons.dev/icons?i=instagram"/>
+    <img src="https://user-images.githubusercontent.com/74038190/235294013-a33e5c43-a01c-43f6-b44d-a406d8b4ab75.gif" width="50">
   </a>
   <a href="https://www.linkedin.com/in/golla-bharath">
-    <img src="https://skillicons.dev/icons?i=linkedin"/>
+    <img src="https://user-images.githubusercontent.com/74038190/235294012-0a55e343-37ad-4b0f-924f-c8431d9d2483.gif" width="50">
   </a>
 </p>
 
