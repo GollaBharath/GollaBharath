@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="28">
+  <linearGradient id="b" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <mask id="a">
+    <rect width="160" height="28" rx="3" fill="#fff"/>
+  </mask>
+  <g mask="url(#a)">
+    <rect width="70" height="28" fill="#5865F2"/>
+    <rect x="70" width="90" height="28" fill="#4c1"/>
+    <rect width="160" height="28" fill="url(#b)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana, Geneva, sans-serif" font-size="11">
+    <text x="35" y="19">Discord</text>
+    <text x="115" y="19">🟢 Online</text>
+  </g>
+</svg>
