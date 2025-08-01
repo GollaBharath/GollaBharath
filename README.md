@@ -26,8 +26,6 @@
 [![Spotify](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/spotify-status.svg)](https://open.spotify.com/user/31enxavrkyobb5lbp4phl33jgnwq)
 [![Local Time](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/local-time.svg)](https://www.timeanddate.com/time/zones/ist)
 [![wakatime](https://wakatime.com/badge/user/e5e36b5e-4ec0-4353-a95c-5e6493afd3c8.svg)](https://wakatime.com/@e5e36b5e-4ec0-4353-a95c-5e6493afd3c8)
-[![Code Time](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/badges/waka-code-time.svg)](https://wakatime.com/@e5e36b5e-4ec0-4353-a95c-5e6493afd3c8)
-[![Lines of Code](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/badges/waka-loc.svg)](https://wakatime.com/@e5e36b5e-4ec0-4353-a95c-5e6493afd3c8)
 ![](https://komarev.com/ghpvc/?username=GollaBharath&style=for-the-badge)
 [![Currently Learning](https://img.shields.io/badge/🧑‍💻%20Currently%20Learning-The%20Odin%20Project-007ACC?style=for-the-badge&labelColor=333333)](https://www.theodinproject.com/)
 [![Tech Stack](https://img.shields.io/badge/🌐%20Tech%20Stack-MERN%20Stack-00DC82?style=for-the-badge&labelColor=333333)](https://www.geeksforgeeks.org/mern/understand-mern-stack/)
@@ -45,6 +43,9 @@
 ## 📈 My Stats
 
 ![My GitHub stats](https://github-readme-stats.vercel.app/api?username=GollaBharath&hide=stars&show_icons=true&theme=transparent)
+
+[![GitHub Streak](https://streak-stats.demolab.com/?user=GollaBharath&theme=dark&border_radius=5)](https://github.com/GollaBharath)
+
 
 <!--START_SECTION:waka-->
 ![Code Time](http://img.shields.io/badge/Code%20Time-6%20hrs%2039%20mins-blue)
@@ -119,5 +120,23 @@ Text                     0 secs              ░░░░░░░░░░░�
   </a>
 </p>
 
+## Like my profile?
+
+<div align='center'>
+
+[![📝 Sign My Visitor Scroll](https://img.shields.io/badge/📝%20Sign%20My%20Visitor%20Scroll-green?style=for-the-badge)](https://gist.github.com/GollaBharath/35b3b7b7354a8caf2cd4ef2b12ef0727)
+[![⭐ Star My Profile](https://img.shields.io/badge/⭐%20Star%20My%20Profile-yellow?style=for-the-badge&logo=github)](https://github.com/GollaBharath/GollaBharath/stargazers)
+[![👤 Follow Me](https://img.shields.io/badge/👤%20Follow%20Me-blue?style=for-the-badge&logo=github)](https://github.com/GollaBharath?tab=followers)
+
+
+</div>
+
+## 🪲 Found Any Bugs?
+
+<div align='center'>
+
+[![Raise an Issue](https://img.shields.io/badge/🛠%20Raise%20an%20Issue-red?style=for-the-badge&logo=github)](https://github.com/GollaBharath/GollaBharath/issues/new)
+
+</div>
 
 ## My Personal Repos
