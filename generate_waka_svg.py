@@ -1,8 +1,10 @@
 import requests
 import os
+import sys
 
 # --- Configuration ---
-WAKATIME_API_KEY = os.getenv("WAKATIME_API_KEY")
+# The API key is now passed as a command-line argument
+WAKATIME_API_KEY = sys.argv[1]
 HEADERS = {"Authorization": f"Bearer {WAKATIME_API_KEY}"}
 API_URL = "https://wakatime.com/api/v1/users/current/all_time_since_today"
 OUTPUT_DIR = "badges"
@@ -24,12 +26,10 @@ def make_svg(label, message, filename):
     padding_x = 15
     char_width_multiplier = 7.5 
     
-    # Calculate widths of the two parts of the badge
     label_width = (len(label) * char_width_multiplier) + (padding_x * 2)
     message_width = (len(message) * char_width_multiplier) + (padding_x * 2)
     total_width = label_width + message_width
     
-    # Calculate x positions for the text
     label_text_x = label_width / 2
     message_text_x = label_width + (message_width / 2)
 
@@ -80,11 +80,10 @@ def main():
         print(f"❌ Error fetching WakaTime data: {e}")
         make_svg("Code Time", "N/A", "waka-code-time.svg")
         make_svg("Lines of Code", "N/A", "waka-loc.svg")
-    except (KeyError, TypeError) as e:
-        print(f"❌ Error parsing WakaTime data: {e}")
+    except (KeyError, TypeError, IndexError) as e:
+        print(f"❌ Error parsing data or missing API Key: {e}")
         make_svg("Code Time", "N/A", "waka-code-time.svg")
         make_svg("Lines of Code", "N/A", "waka-loc.svg")
-
 
 if __name__ == "__main__":
     main()

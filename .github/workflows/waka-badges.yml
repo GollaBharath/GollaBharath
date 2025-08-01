@@ -22,9 +22,7 @@ jobs:
         run: pip install requests
 
       - name: Generate SVG badges
-        env:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-        run: python generate_waka_svg.py
+        run: python generate_waka_svg.py ${{ secrets.WAKATIME_API_KEY }}
 
       - name: Commit and push
         run: |
