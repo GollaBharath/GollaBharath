@@ -26,7 +26,7 @@
 [![Spotify](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/spotify-status.svg)](https://open.spotify.com/user/31enxavrkyobb5lbp4phl33jgnwq)
 [![Local Time](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/local-time.svg)](https://www.timeanddate.com/time/zones/ist)
 [![wakatime](https://wakatime.com/badge/user/e5e36b5e-4ec0-4353-a95c-5e6493afd3c8.svg)](https://wakatime.com/@e5e36b5e-4ec0-4353-a95c-5e6493afd3c8)
-![Lines of Code](https://img.shields.io/endpoint?url=https://gollabharath.github.io/GollaBharath/badges/loc.json)
+[![Local Time](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/waka-code-time.svg)](https://wakatime.com/@e5e36b5e-4ec0-4353-a95c-5e6493afd3c8)
 [![Currently Learning](https://img.shields.io/badge/🧑‍💻%20Currently%20Learning-The%20Odin%20Project-007ACC?style=for-the-badge&labelColor=333333)](https://www.theodinproject.com/)
 [![Tech Stack](https://img.shields.io/badge/🌐%20Tech%20Stack-MERN%20Stack-00DC82?style=for-the-badge&labelColor=333333)](https://www.geeksforgeeks.org/mern/understand-mern-stack/)
 [![Working On](https://img.shields.io/badge/🛠️%20Working%20On-Discord%20BOT%20%2F%20Web%20Dev-FF6D00?style=for-the-badge&labelColor=333333)](https://github.com/GollaBharath?tab=repositories)

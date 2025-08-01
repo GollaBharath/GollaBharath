@@ -1,12 +1,12 @@
-name: Generate WakaTime Badges
+name: Generate Waka SVG Badges
 
 on:
   schedule:
-    - cron: "0 * * * *"  # every hour
+    - cron: '0 * * * *'  # Every hour
   workflow_dispatch:
 
 jobs:
-  generate-badges:
+  generate-svg:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,16 +21,16 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run badge generator
+      - name: Generate SVG badges
         env:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-        run: python generate_badges.py
+        run: python generate_waka_svg.py
 
-      - name: Commit and push changes
+      - name: Commit and push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add badges/*.json
-          git commit -m "Update WakaTime badges" || echo "No changes to commit"
+          git add badges/*.svg
+          git commit -m "Update WakaTime SVG badges" || echo "No changes"
           git pull origin main --rebase
           git push
