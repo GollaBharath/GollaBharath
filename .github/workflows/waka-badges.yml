@@ -13,15 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Run WakaTime SVG generation in Docker
-        uses: docker://ghcr.io/actions/runner-images/community/docker:24.0.5
-        with:
-          entrypoint: /usr/bin/docker
-          args: |
-            run --rm \
-            -e WAKATIME_API_KEY=${{ secrets.WAKATIME_API_KEY }} \
+      - name: Run Python script in Docker
+        run: |
+          docker run --rm \
             -v ${{ github.workspace }}:/app \
-            --workdir /app \
+            -w /app \
+            -e WAKATIME_API_KEY='${{ secrets.WAKATIME_API_KEY }}' \
             python:3.11-slim \
             sh -c "pip install requests && python generate_waka_svg.py"
 
