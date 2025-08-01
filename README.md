@@ -1,5 +1,6 @@
 ```
-.... . .-.. .-.. ---
+.... . -.-- ....... - .... . .-. . -.-.-- -.-.-- -.-.--
+
  _____            
 |_   _|( )          
   | |  |/ _ __ ___  
@@ -24,10 +25,13 @@
 [![Discord Status](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/discord-status.svg)](https://discordapp.com/users/972801524092776479)
 [![Spotify](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/spotify-status.svg)](https://open.spotify.com/user/31enxavrkyobb5lbp4phl33jgnwq)
 [![Local Time](https://raw.githubusercontent.com/GollaBharath/GollaBharath/main/local-time.svg)](https://www.timeanddate.com/time/zones/ist)
+[![wakatime](https://wakatime.com/badge/user/e5e36b5e-4ec0-4353-a95c-5e6493afd3c8.svg)](https://wakatime.com/@e5e36b5e-4ec0-4353-a95c-5e6493afd3c8)
+![Lines of Code](https://img.shields.io/endpoint?url=https://gollabharath.github.io/GollaBharath/badges/loc.json)
 [![Currently Learning](https://img.shields.io/badge/🧑‍💻%20Currently%20Learning-The%20Odin%20Project-007ACC?style=for-the-badge&labelColor=333333)](https://www.theodinproject.com/)
 [![Tech Stack](https://img.shields.io/badge/🌐%20Tech%20Stack-MERN%20Stack-00DC82?style=for-the-badge&labelColor=333333)](https://www.geeksforgeeks.org/mern/understand-mern-stack/)
 [![Working On](https://img.shields.io/badge/🛠️%20Working%20On-Discord%20BOT%20%2F%20Web%20Dev-FF6D00?style=for-the-badge&labelColor=333333)](https://github.com/GollaBharath?tab=repositories)
 [![My Dream](https://img.shields.io/badge/💬%20My%20Dream-BUILD%20JARVIS-999999?style=for-the-badge&labelColor=333333)](https://www.imdb.com/title/tt0371746/)
+
 
 </div>
 
@@ -48,19 +52,19 @@
 
 <p align="center">
   <a href="https://discordapp.com/users/972801524092776479">
-    <img src="https://skillicons.dev/icons?i=discord" />
+    <img src="https://skillicons.dev/icons?i=discord"/>
   </a>
   <a href="https://github.com/GollaBharath">
-    <img src="https://skillicons.dev/icons?i=github" />
+    <img src="https://skillicons.dev/icons?i=github"/>
   </a>
   <a href="mailto:gollabharath2007@gmail.com">
-    <img src="https://skillicons.dev/icons?i=gmail" />
+    <img src="https://skillicons.dev/icons?i=gmail"/>
   </a>
   <a href="https://www.instagram.com/gollabharath_">
-    <img src="https://skillicons.dev/icons?i=instagram" />
+    <img src="https://skillicons.dev/icons?i=instagram"/>
   </a>
   <a href="https://www.linkedin.com/in/golla-bharath">
-    <img src="https://skillicons.dev/icons?i=linkedin" />
+    <img src="https://skillicons.dev/icons?i=linkedin"/>
   </a>
 </p>
 
