@@ -47,7 +47,7 @@ def generate_svg(track_data):
 
     song_text = html.escape(song_text)
 
-    left_color = "#555555"
+    left_color = "#1DB954"
     right_color = "#1DB954" if is_playing else "#9e9e9e"
     text_color = "#ffffff"
 
@@ -86,7 +86,7 @@ def generate_svg(track_data):
     <rect width="{total_width}" height="28" fill="url(#b)"/>
   </g>
   <g fill="{text_color}" font-family="Segoe UI, sans-serif" font-size="13">
-    <text x="10" y="19" fill="{text_color}">Spotify</text>
+    <text x="30" y="19" fill="{text_color}">Spotify</text>
     {text_element}
     {marquee_svg}
   </g>
