@@ -42,9 +42,9 @@
 
 ## 📈 My Stats
 
-![My GitHub stats](https://github-readme-stats.vercel.app/api?username=GollaBharath&hide=stars&show_icons=true&theme=transparent)
+[![My GitHub stats](https://github-readme-stats.vercel.app/api?username=GollaBharath&hide=stars&show_icons=true&theme=transparent)](https://github.com/GollaBharath)
 
-![GitHub Streak](https://streak-stats.demolab.com/?user=GollaBharath&theme=transparent&border_radius=5)
+[![GitHub Streak](https://github-readme-streak-stats-navy-five.vercel.app?user=GollaBharath&theme=transparent)](https://github.com/GollaBharath)
 
 
 <!--START_SECTION:waka-->
