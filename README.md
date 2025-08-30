@@ -25,7 +25,7 @@
 
 ## 📈 My Stats
 
-[![My GitHub stats](https://github-readme-stats.vercel.app/api?username=GollaBharath&hide=stars&show_icons=true&theme=transparent)](https://github.com/GollaBharath)
+[![My GitHub stats](https://github-readme-stats.vercel.app/api?username=GollaBharath&show_icons=true&theme=transparent)](https://github.com/GollaBharath)
 
 [![GitHub Streak](https://github-readme-streak-stats-navy-five.vercel.app?user=GollaBharath&theme=transparent)](https://github.com/GollaBharath)
 
