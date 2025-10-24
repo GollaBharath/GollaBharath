@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="378" height="28">
+<svg xmlns="http://www.w3.org/2000/svg" width="329" height="28">
   <linearGradient id="b" x2="0" y2="100%">
     <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
   <mask id="a">
-    <rect width="378" height="28" rx="3" fill="#fff"/>
+    <rect width="329" height="28" rx="3" fill="#fff"/>
   </mask>
   <g mask="url(#a)">
     <rect width="120" height="28" fill="#1DB954"/>
-    <rect x="120" width="258" height="28" fill="#1DB954"/>
-    <rect width="378" height="28" fill="url(#b)"/>
+    <rect x="120" width="209" height="28" fill="#1DB954"/>
+    <rect width="329" height="28" fill="url(#b)"/>
   </g>
   <g fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="13">
     <text x="30" y="19" fill="#ffffff">Spotify</text>
-    <text x="125" y="19" fill="#ffffff">Lose You To Love Me - Selena Gomez</text>
+    <text x="125" y="19" fill="#ffffff">Queen of Kings - Alessandra</text>
     
   </g>
 </svg>
