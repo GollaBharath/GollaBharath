@@ -30,7 +30,7 @@
 [![GitHub Streak](https://github-readme-streak-stats-navy-five.vercel.app?user=GollaBharath&theme=transparent)](https://github.com/GollaBharath)
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-106%20hrs%2014%20mins-blue)
+![Code Time](http://img.shields.io/badge/Code%20Time-106%20hrs%2037%20mins-blue)
 
 ![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-381.7%20thousand%20lines%20of%20code-blue)
 
@@ -81,7 +81,7 @@ Java                     2 repos             ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 
 
 
- Last Updated on 09/11/2025 09:15:44 UTC
+ Last Updated on 09/11/2025 10:16:05 UTC
 <!--END_SECTION:waka-->
 
 ## 🚀 Tools in my Arsenal
