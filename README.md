@@ -30,7 +30,7 @@
 [![GitHub Streak](https://github-readme-streak-stats-navy-five.vercel.app?user=GollaBharath&theme=transparent)](https://github.com/GollaBharath)
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-152%20hrs%2039%20mins-blue)
+![Code Time](http://img.shields.io/badge/Code%20Time-145%20hrs%2051%20mins-blue)
 
 ![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-1.9%20million%20lines%20of%20code-blue)
 
@@ -78,7 +78,7 @@ PHP                      2 repos             ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 
 
 
- Last Updated on 25/12/2025 18:24:46 UTC
+ Last Updated on 25/12/2025 19:15:51 UTC
 <!--END_SECTION:waka-->
 
 ## 🚀 Tools in my Arsenal
