@@ -25,9 +25,9 @@
 
 ## 📈 My Stats
 
-![LeetCode Stats](https://leetcard.jacoblin.cool/deadindian?theme=dark&font=Sarala&ext=heatmap)
+[![LeetCode Stats](https://leetcard.jacoblin.cool/deadindian?theme=dark&font=Sarala&ext=heatmap)](https://leetcode.com/u/deadindian/)
 
-[![GitHub Streak](https://github-readme-streak-stats-vijaypur.vercel.app?user=GollaBharath&theme=dark)](https://git.io/streak-stats)
+[![GitHub Streak](https://github-readme-streak-stats-vijaypur.vercel.app?user=GollaBharath&theme=dark)](https://github.com/GollaBharath)
 
 <!--START_SECTION:waka-->
 
