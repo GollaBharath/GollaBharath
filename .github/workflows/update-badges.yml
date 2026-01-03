@@ -1,0 +1,30 @@
+name: Update Dynamic Badges
+
+on:
+  schedule:
+    - cron: "*/2 * * * *" # runs every 2 minutes
+  workflow_dispatch:
+
+jobs:
+  update-badges:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Run badge update script
+        run: node update-badges.js
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add local-time.svg spotify-status.svg discord-status.svg
+          git commit -m "Update dynamic badges [skip ci]" || echo "No changes"
+          git pull origin main --rebase
+          git push
